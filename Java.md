@@ -92,6 +92,18 @@ StringBuffer는 Builder와 비교해서 thread-safe하다. (멀티 스레드 환
 
 (StringBuilder) 동기화 지원x, 멀티쓰레드 환경에부적합. => 싱글쓰레드에서 stringBuffer 보다 좋음
 
+
+
+**-** **성능을 개선하기 위해 어떤 방법을 사용?**
+
+ static 사용 : 인스턴스 변수에 접근할 일이 없는 경우 static메서드를 선언하여 호출하면 15~20% 개선
+
+(장) 모든 객체가 공유할 수 있음 메모리절약 + 연속적으로 그 값의 흐름을 이어갈 수 있음.
+
+final 과 차이 : 변경할 수 없음, 상속할 수 없음
+
+ Static + final : 변경할 수 없는 공유정보
+
 ## Comparable, Comparator 차이
 
 
