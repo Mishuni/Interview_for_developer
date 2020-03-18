@@ -62,15 +62,35 @@ java는 JVM 을 지니고 있어, 어떤 OS에든 호환되어 잘 동작하는 
 
    : ex. A a = new A()일 때, stack은 주소값을, heap 은 해당 클래스의 데이터들을 저장
 
+> 생명주기
+>
+> static > heap > stack
+
 #### gc (garbage collection)
 
 : Heap에 저장된 데이터가 더 이상 stack에 있는 변수로 부터 참조되지 않을 때(쓸모 없어 지는 경우), JVM이 알아서 메모리에서 해제 시키는 것 
 
 : 이로 인해서 개발자가 따로 메모리 관리를 할 필요가 없다.
 
-> 생명주기
->
-> static > heap > stack
+#### String, StringBuilder, StringBuffer 의 차이
+
+- String
+
+String 클래스는 Immutable 객체이기 때문에 + 등 concat 연산 시 원본을 변경하지 않고 새로운 String 인스턴스를 생성해야 하는 단점이 존재한다. 하지만 JDK 1.5 이후부터는 컴파일 타임에 StringBuilder로 변경한다고 한다.
+
+- StringBuilder
+
+String에서 + 등으로 문자열 등을 concat하는 연산이 많은 경우 사용하는것이 좋다. 기존 String 문자들을 concat하는 경우 매번 새로운 String 인스턴스를 사용하기 때문에 성능상의 이슈 존재(JDK 1.5버전 부터는 내부적으로 StringBuilder를 이용하도록 변경되긴 했다.)
+
+- StringBuffer
+
+StringBuffer는 Builder와 비교해서 thread-safe하다. (멀티 스레드 환경에서 동기화의 지원 여부가 다름.) 내부적으로 append 등 모든 메소드에 대해 synchronized 키워드가 붙어있다.
+
+
+
+## Comparable, Comparator 차이
+
+
 
 # 참고
 
