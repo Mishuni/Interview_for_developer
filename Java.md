@@ -42,7 +42,7 @@ java는 JVM 을 지니고 있어, 어떤 OS에든 호환되어 잘 동작하는 
 
 #### 메모리
 
-1. static
+1. static (method 영역)
 
    : static 영역의 데이터들은 프로그램의 시작부터 종료가 될 때까지 메모리에 저장된다. 
 
@@ -112,7 +112,31 @@ Java 8 이후로 lamda
 
 (a) -> {return a;}
 
+#### Thread (스레드)
 
+> * Multiprocessing
+>
+>   : Task를 실행하는 core (cpu core, processor) 가 2개 이상인 경우 (동시간대 여러가지 일을 동시할 수 있을 때)
+>
+> * MultiTasking
+>
+>   : 하나의 processor 에서 여러가지 task를 동시간대로 처리하는 것 ( ralated to time slicing, context switch )
+>
+>   : 하나의 core가 시분할(time slicing) 기법을 이용해서 여러개의 Task를 마치 동시에 수행되는 것처럼 보이게 하는 기법
+>
+> * MultiThreading
+>
+>   : 하나의 Task를 여러개의 sub Task로 분할해서 동시간대에 혹은 마치 동시간에 실행되는 것처럼 수행하는 기법
+>
+>   : 하나의 Thread는 독립적인 실행 흐름
+>
+>   : ex) 1~100 까지 더하는 경우 
+>
+>   : 단일 스레드 (single thread)는 순차 처리라서 비효율적일 수 있음 (동시 다발적으로 여러사람이 표를 예매하는 경우 100명이 동시에 티켓을 구매하면 100번째 사람은 앞에  99명 처리 될 때까지 기다려야함)
+>
+>   : 프로그램의 성능을 매우 향상시켜주지만 제어가 어려운 단점이 있음
+>
+> * 관련 os용어들 : thread, mutext, semaphore
 
 # 참고
 
