@@ -159,7 +159,13 @@ Java 8 이후로 lamda
 * jvm 에 요청만 하고 넘김 ( 결과를 기다리지 않음)
   non-blocking 방식
 
-* 기본적인 방식에서 thread 들의 실행 순서를 개발자가 판단할 수 없다. 지정할 수 있는 부가적인 방법은 존재 ex) main에 있는 print와 thread.start()로 실행한 print중에 누가 먼저 실행될까? 
+* 기본적인 방식에서 thread 들의 실행 순서를 개발자가 판단할 수 없다. 지정할 수 있는 부가적인 방법은 존재 ex) main에 있는 print와 thread.start()로 실행한 print중에 누가 먼저 실행될까?
+
+* 동기화(synchronization)에 주의해야 한다.
+
+  교착상태(dead-lock)가 발생하지 않도록 주의해야 한다.
+
+  각 쓰레드가 효율적으로 고르게 실행될 수 있게 해야 한다. 
 
 
 
