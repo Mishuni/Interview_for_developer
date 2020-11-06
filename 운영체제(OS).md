@@ -1,6 +1,6 @@
 # OS (운영체제)
 
-
+> 운영체제의 기능 : CPU관리, 메모리 관리, I/O 관리
 
 1. Interpreter 와 compile 언어에 대해 설명하시오 
 
@@ -210,7 +210,37 @@
     page fault랑 인터럽트랑 같은거야? 
     page fault가 발생한 이후에 운영체제가 해주는 일을 자세히 순서대로 기술해봐. 
 
-16. 
+16. First-fit, best-fit, worst-fit 에 대해서 설명하시오.
+
+    메모리에 process 를 할당할때, contiguous allocation을 하는 경우. 즉, 한 프로세스는 연속적으로 메모리에 할당이 되는 것 -> 프로세스마다 필요한 메모리 영역의 크기가 다르다. 이 과정에서 프로세스를 메모리에 어떻게 할당하는가를 정의한 방법들이다.
+
+    그렇기 때문에 External fragmentation(외부 파편화)이 발생한다.
+
+    > External Fragmentation? 
+    >
+    > 현재 메모리에 총 남아있는 영역이 넉넉히 있음에도 연속적으로 프로세스를 담을 수 있는 공간이 없는 경우 (남은 영역의 총 합 > 프로세스 사이즈 but 연속된 영역의 최대 사이즈 < 프로세스 사이즈)
+    >
+    > Compaction으로 해결할 수 있진 않을까? 
+    >
+    > compaction은 현재 할당된 프로세스들을 옮겨서 빈공간의 영역을 키우는 것인데 옮기는 과정에서 이를 복사하여 저장할 임시의 데이터 공간이 필요한데 그렇게 되면 secondary storage(즉, 하드디스크)같은 것을 도입해야하므로 좋은 방법이 아니다.
+
+    * **First-fit** 은 프로세스가 위치할 곳을 메모리 처음부터 탐색하는데 제일 먼저 들어갈 수 있는 공간이 나오면 거기에 위치시키는 것
+    * **Best-fit** 은 프로세스가 그 위치에 들어가면 남는 메모리 영역이 가장 적은 최적의 공간에 위치시키는 것
+    * **Worst-fit** 은 프로세스가 위치하면 가장 많은 메모리 영역이 남게되는 곳에 위치시키는 것
+
+17. 멀티 프로그래밍이란?
+
+    각 프로세스가 독립적 메모리 영역을 갖는 것 -> 각 프로세스들이 서로 메모리를 침범하면 안됨
+
+    이런 경우 context switch 순간에 어떤 일이 일어나나? -> 현재 진행중인 프로세스 A의 시작점(base)와 한계 크기(limit)값들을 저정하고, 프로세스 B를 위한 새로운 값을 base와 limit으로 로드 한다.
+
+18. MMU 란?
+
+    Memory Management Unit으로 execution time에 진행되는 run time address binding을 도움을 주는 것 -> CPU코어 안에 탑재되어 가상 주소를 실제 메로리 주소로 변환해주는 장치
+
+    이 과정에서 memory protection을 해주는데 주소 변환을 위해 제공된 base,limit을 이용해 실제 주소를 반환하는 과정에서 cpu가 요청한 주소가 해당 영역을 넘어간다 (실제로 할당될 수 없는 주소이다)라는 경우에 memory protection fault가 발생해 interupt를 걸어줍니다.(cpu가 운영체제가 이를 처리하도록 요청)
+
+    위와 같은 방식을 이용하려면 각 프로세스 등의 메모리 할당을 cotiguous allocation 방식으로 진행해야 한다. 따라서 contiguous allocation은 MMU가 매우 간단하게 설계될 수 있는 장점이 있다. cpu가 요청한 논리 주소가 그 프로세스의 할당 범위보다 넘냐 안넘냐를 base, limit을 가지고만 판단하면 되기 때문이다. 하지만, external fragmentation을 해결하지 못한다는 단점이 있기 때문에 현재의 시스템에서는 잘 쓰이지 않는다.
 
 ---
 
@@ -239,3 +269,7 @@
 9. https://secretroute.tistory.com/entry/140819
 
 13. https://blockdmask.tistory.com/69
+
+16. https://jhnyang.tistory.com/264
+
+18. https://jhnyang.tistory.com/247
