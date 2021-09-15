@@ -360,7 +360,7 @@
     >
     > => 따라서, 컴퓨터의 운영체제는 프로그램의 실행을 위해 다양한 메모리 공간을 제공한다.
 
-    <img src="/Users/yumiseon/Interview_for_developer/images/memory.png" alt="memory" style="zoom:70%;" />
+    <img src="./images/memory.png" alt="memory" style="zoom:70%;" />
 
     1. 코드(code) 영역
 
